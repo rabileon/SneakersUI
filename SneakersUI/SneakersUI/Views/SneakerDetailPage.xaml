@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SneakersUI.Views.SneakerDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:helpers="clr-namespace:SMarT.APP.User.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <!--  Main structure  -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*">
+                <!--  Corner points  -->
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="20,45,0,0"
+                    HeightRequest="30"
+                    HorizontalOptions="Start"
+                    Source="{FontImage FontFamily=MaterialFontFamily,
+                                       Glyph={x:Static helpers:IconFont.DotsSquare},
+                                       Size=30,
+                                       Color=Black}" />
+                <!--  Circle shape  -->
+                <Ellipse
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0,45,20,0"
+                    HeightRequest="55"
+                    HorizontalOptions="End"
+                    Stroke="Silver"
+                    StrokeThickness="1"
+                    WidthRequest="55" />
+                <!--  Circle shape text  -->
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0,65,50,0"
+                    FontAttributes="Bold"
+                    FontSize="23"
+                    HorizontalOptions="End"
+                    Text="360°" />
+                <!--  Main shape (Green circle)  -->
+                <Ellipse
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Fill="#97b8ad"
+                    HeightRequest="300"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="300" />
+                <!--  Main sneaker  -->
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Aspect="AspectFill"
+                    HeightRequest="280"
+                    HorizontalOptions="Center"
+                    Source="https://cdn.shopify.com/s/files/1/0232/8120/5325/products/CU7909-100-PHSLH000-2000_large.png?v=160218839633"
+                    VerticalOptions="Center" />
+                <!--  Sneaker size  -->
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Padding="35,-20,0,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label FontAttributes="Bold" Text="US 7" />
+                    <Image Source="{FontImage FontFamily=MaterialFontFamily, Glyph={x:Static helpers:IconFont.MenuDown}, Size=30, Color=Black}" />
+                </StackLayout>
+
+                <!--  5. Second title  -->
+                <!--  Title  -->
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Padding="35,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="40"
+                    Text="NMD_R1 mint&#10;pink candy" />
+                <!--  Colors selector  -->
+                <CollectionView
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="35,10,0,10"
+                    HeightRequest="50"
+                    HorizontalScrollBarVisibility="Never"
+                    ItemsLayout="HorizontalList"
+                    ItemsSource="{Binding sneakerColor}"
+                    VerticalOptions="StartAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="0,0,25,0">
+                                <Button
+                                    BackgroundColor="{Binding ColorOption}"
+                                    CornerRadius="10"
+                                    HeightRequest="20"
+                                    WidthRequest="20" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--  Price  -->
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Padding="0,0,35,0"
+                    HorizontalOptions="End">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="25" Text="$ " />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="40"
+                                Text="179" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!--  6. Description  -->
+                <Grid
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Padding="20,30,0,20"
+                    Background="#fcf6f2"
+                    ColumnDefinitions="Auto,*"
+                    RowDefinitions="Auto,Auto,*"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        FontAttributes="Bold"
+                        Text="About the product" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        LineHeight="1.6"
+                        Text="You never know where the day will take you, but &#10;at least you know you're going to look fresh &#10;while you figure it out." />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        BorderColor="#e4e2e1"
+                        BorderWidth="2"
+                        CornerRadius="10"
+                        HeightRequest="60"
+                        ImageSource="{FontImage FontFamily=MaterialFontFamily,
+                                                Glyph={x:Static helpers:IconFont.HeartOutline},
+                                                Size=30,
+                                                Color=Black}"
+                        VerticalOptions="Center"
+                        WidthRequest="60" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="10,0,20,0"
+                        Background="Black"
+                        CornerRadius="20"
+                        FontAttributes="Bold"
+                        HeightRequest="60"
+                        Text="ADD TO CART"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
